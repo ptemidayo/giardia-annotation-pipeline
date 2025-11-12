@@ -1,0 +1,246 @@
+# Giardia Annotation Pipeline - .gitignore
+# This file tells Git which files and directories to ignore
+
+# =============================================================================
+# RESULTS AND OUTPUT DIRECTORIES
+# =============================================================================
+# Don't upload annotation results (can be very large)
+results/
+output/
+*_TIMESTAMP/
+
+# Log files
+*.log
+*_pipeline.log
+*_validation.log
+
+# =============================================================================
+# DATABASE FILES (TOO LARGE FOR GIT)
+# =============================================================================
+# DIAMOND databases
+databases/*.dmnd
+databases/*.db
+
+# Protein databases (users download their own)
+databases/*.fasta
+databases/*.faa
+databases/*.fa
+
+# Reference genomes and proteins
+databases/reference_*.fna
+databases/giardia_*.fasta
+
+# =============================================================================
+# GENOME FILES (USER-PROVIDED)
+# =============================================================================
+# Input genomes
+genomes/*.fna
+genomes/*.fasta
+genomes/*.fa
+genomes/*.faa
+
+# But keep a README in the genomes directory
+!genomes/README.md
+
+# =============================================================================
+# BUSCO OUTPUTS
+# =============================================================================
+busco_*/
+run_*/
+busco_downloads/
+*_busco/
+
+# =============================================================================
+# TEMPORARY FILES
+# =============================================================================
+*.tmp
+*.temp
+*~
+*.bak
+*.swp
+*.swo
+
+# Intermediate files
+*_temp.faa
+*_temp.fna
+*_temp.gff*
+normalized_*.fasta
+
+# =============================================================================
+# PYTHON CACHE
+# =============================================================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.py[cod]
+*$py.class
+
+# =============================================================================
+# SYSTEM FILES
+# =============================================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+
+# =============================================================================
+# EDITOR FILES
+# =============================================================================
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# PyCharm / IntelliJ
+.idea/
+*.iml
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# =============================================================================
+# CONDA / VIRTUAL ENVIRONMENTS
+# =============================================================================
+# Conda environments
+conda_env/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# =============================================================================
+# ANNOTATION TOOL INTERMEDIATE FILES
+# =============================================================================
+# Augustus intermediate files
+*.evidence
+*.gff.tmp
+
+# Glimmer intermediate files
+*_longorfs.txt
+*_training.fasta
+*.icm
+*.detail
+*.coords
+
+# Prodigal intermediate files
+*.genes
+*.prots
+*.scores
+
+# gffread intermediate files
+*.gff.tmp
+
+# =============================================================================
+# COMPRESSED FILES
+# =============================================================================
+# Archives (usually too large)
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.gz
+*.bz2
+*.xz
+*.7z
+
+# But keep documentation archives if any
+!docs/*.zip
+!examples/*.tar.gz
+
+# =============================================================================
+# LARGE OUTPUT FILES
+# =============================================================================
+# GenBank files in subdirectories (can be regenerated)
+results/*/*.gbk
+results/*/*.gb
+
+# Large annotation files (can be regenerated)
+results/*/*.gff3
+results/*/*.faa
+results/*/*.fna
+
+# =============================================================================
+# TEST DATA (OPTIONAL)
+# =============================================================================
+# If you want to exclude test data from the repo
+# test_data/large_genome.fna
+# test_data/results/
+
+# Keep test documentation
+!test_data/README.md
+
+# =============================================================================
+# SLURM AND HPC FILES
+# =============================================================================
+# SLURM output files
+slurm-*.out
+*.sbatch.out
+*.sbatch.err
+
+# =============================================================================
+# STATISTICS AND REPORTS
+# =============================================================================
+# Keep final reports, but ignore intermediate stats
+*_intermediate_stats.txt
+*_temp_report.txt
+
+# =============================================================================
+# KEEP THESE FILES (OVERRIDE EXCLUSIONS)
+# =============================================================================
+# Example data files
+!examples/*.sh
+!examples/README.md
+
+# Documentation
+!docs/*.md
+!docs/*.txt
+
+# License and README
+!LICENSE
+!README.md
+!CITATION.cff
+
+# Pipeline script itself
+!giardia_annotation_pipeline.sh
+
+# =============================================================================
+# NOTES
+# =============================================================================
+# This .gitignore is designed to:
+# 1. Keep the repository small and focused on code
+# 2. Exclude user-specific data and results
+# 3. Exclude large databases that users should download themselves
+# 4. Exclude temporary and intermediate files
+# 5. Keep all documentation and examples
+#
+# Users will need to:
+# - Create their own genomes/ directory and add genome files
+# - Download their own Giardia protein database
+# - Generate their own results
